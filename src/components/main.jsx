@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ToDoList from './toDoList';
+import NavBar from './navbar';
 
 export default class Main extends Component {
   state = {
@@ -8,15 +9,13 @@ export default class Main extends Component {
 
   _handleDelete = itemId => {
     const toDoList = this.state.toDoList.filter(item => item.id !== itemId);
-
     this.setState({ toDoList });
   };
 
   _handleComplete = item => {
-    debugger;
     const toDoList = this.state.toDoList;
     const i = toDoList.indexOf(item);
-    toDoList[i].complete = true;
+    toDoList[i].complete = toDoList[i].complete === true ? false : true;
     this.setState({ toDoList });
   };
 
@@ -34,12 +33,15 @@ export default class Main extends Component {
 
   render() {
     return (
-      <ToDoList
-        toDoList={this.state.toDoList}
-        onComplete={this._handleComplete}
-        onDelete={this._handleDelete}
-        onAddItem={this._handleAddTolist}
-      />
+      <React.Fragment>
+        <NavBar />
+        <ToDoList
+          toDoList={this.state.toDoList}
+          onComplete={this._handleComplete}
+          onDelete={this._handleDelete}
+          onAddItem={this._handleAddTolist}
+        />
+      </React.Fragment>
     );
   }
 }
