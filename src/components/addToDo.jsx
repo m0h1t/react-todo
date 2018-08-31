@@ -13,7 +13,7 @@ class AddToDo extends Component {
   render() {
     return (
       <div className="col-md-4 mb-3">
-        <div className="card m-2 p-2">
+        <div className="card m-2">
           <div className="card-content">
             <span className="card-title">Add a task here</span>
             <button
@@ -25,12 +25,12 @@ class AddToDo extends Component {
             </button>
           </div>
           <div className="card-action">
-            <textarea
+            <input
+              type="text"
               className="form-control"
               value={this.state.toDoText}
               onChange={this._handleChange.bind(this)}
               placeholder="Enter To-Do text here"
-              rows="3"
             />
           </div>
         </div>
